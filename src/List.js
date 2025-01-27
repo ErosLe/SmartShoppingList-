@@ -112,7 +112,7 @@ const List = () => {
               </li>
             ))
           ) : (
-            <li>Loading...</li>
+            <li>There are no items in the list</li>
           )}
         </ul>
       </div>
