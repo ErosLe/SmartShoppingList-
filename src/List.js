@@ -16,7 +16,7 @@ const List = () => {
     if (item && item.price === "") {
       let itemPrice = prompt("Enter a new price for the item (Ft):");
 
-      if (isNaN(Number(itemPrice)) || !itemPrice) return; // Érvényességi ellenőrzés
+      if (isNaN(Number(itemPrice)) || !itemPrice) return;
 
       setData((prevData) =>
         prevData.map((item) =>
@@ -47,13 +47,14 @@ const List = () => {
   const createItem = () => {
     let newItemName = prompt("New item");
     if (!newItemName) return;
-    const itemPrice = prompt("Price of the item (Ft)");
-    if (isNaN(Number(itemPrice))) return;
-    const newItem = { name: newItemName, price: itemPrice, id: uuidv4() };
+    // const itemPrice = prompt("Price of the item (Ft)");
+    // if (isNaN(Number(itemPrice))) return;
+    // const newItem = { name: newItemName, price: itemPrice, id: uuidv4() };
+    const newItem = { name: newItemName, price: "", id: uuidv4() };
     const newData = [...data, newItem];
     setData(newData);
-    setSum((prevSum) => Number(prevSum) + Number(newItem.price));
-    console.log(newData);
+    // setSum((prevSum) => Number(prevSum) + Number(newItem.price));
+    // console.log(newData);
   };
   const getData = () => {
     fetch("/data.json", {
@@ -79,6 +80,10 @@ const List = () => {
 
   return (
     <div>
+      {/* <div id="caution-text">
+        This page is under development, and some functionality may behave
+        unexpectedly...
+      </div> */}
       <div className="header">
         <p id="date">Date: {today}</p>
         <button id="desktop" onClick={createItem}>
